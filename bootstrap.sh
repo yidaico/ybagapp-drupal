@@ -24,6 +24,9 @@ sudo service nginx start
 # install php55
 sudo rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
 sudo yum install -y php55w php55w-cli php55w-opcache php55w-fpm php55w-gd
+sudo chkconfig --add php-fpm
+sudo chkconfig php-fpm on
+sudo service php-fpm start
 
 # install mysql56
 wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
