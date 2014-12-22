@@ -65,4 +65,5 @@ cd /usr/local/src/drush
 git checkout 6.5.0
 composer install
 ln -s /usr/local/src/drush/drush /usr/bin/drush
+drush --version
 
