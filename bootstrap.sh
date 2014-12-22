@@ -31,6 +31,7 @@ service httpd start
 
 # install php55
 yum install -y php55 \
+	       php55-php \
                php55-php-cli \
                php55-php-opcache \
 	       php55-php-mysqlnd \
@@ -40,8 +41,8 @@ yum install -y php55 \
 # install php55 optional packages
 yum install -y php55-php-pecl-uopz \
                php55-php-soap \
-               php-phpunit-PHP-Invoker \ 
 	       php55-php-pecl-xdebug
+#               php-phpunit-PHP-Invoker 
 
 ln -s /usr/bin/php55 /usr/bin/php
 
@@ -64,5 +65,4 @@ cd /usr/local/src/drush
 git checkout 6.5.0
 composer install
 ln -s /usr/local/src/drush/drush /usr/bin/drush
-drush --version
 
