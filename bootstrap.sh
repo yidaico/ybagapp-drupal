@@ -9,7 +9,7 @@ rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 yum-config-manager --enable remi remi-test
 
 # install apache httpd22
-yum install -y httpd httpd-tools 
+yum install -y httpd httpd-tools mod_ssl 
 chkconfig --add httpd
 chkconfig httpd on
 service httpd start
