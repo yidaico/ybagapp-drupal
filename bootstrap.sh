@@ -69,3 +69,7 @@ drush --version
 
 # install vim (optional)
 yum install -y vim
+
+# link drupal
+ln -s /vagrant/drupal /var/www/html/drupal
+
