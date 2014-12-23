@@ -67,3 +67,5 @@ composer install
 ln -s /usr/local/src/drush/drush /usr/bin/drush
 drush --version
 
+# install vim (optional)
+yum install -y vim
