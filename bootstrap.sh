@@ -70,6 +70,20 @@ drush --version
 # install vim (optional)
 yum install -y vim
 
-# link drupal
-ln -s /vagrant/drupal /var/www/html/drupal
+# set up ssl certificates
+rm -f /etc/pki/tls/certs/localhost.crt
+rm -f /etc/pki/tls/private/localhost.key
+cp /vagrant/config/ssl/localhost.crt /etc/pki/tls/certs
+cp /vagrant/config/ssl/localhost.key /etc/pki/tls/private
 
+# set up httpd conf 
+ln -s /vagrant/drupal /var/www/ybagapp.com
+mkdir /etc/httpd/conf/vhosts
+cp /vagrant/config/vhosts/* /etc/httpd/conf/vhosts
+rm -f /etc/httpd/conf/httpd.conf
+cp /vagrant/config/httpd.conf /etc/httpd/conf
+
+# disable selinux
+setenforce 0
+
+service httpd restart
