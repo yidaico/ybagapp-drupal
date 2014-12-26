@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# set up timezone
+cp /usr/share/zoneinfo/Canada/Pacific /etc/localtime
+date
+
 # install yum-utils
 yum install -y yum-utils
 
@@ -38,6 +42,7 @@ yum install -y php55 \
 	       php55-php-mbstring \
 	       php55-php-xml \
 	       php55-php-gd \
+	       php55-php-pecl-uploadprogress 
 
 # install php55 optional packages
 yum install -y php55-php-pecl-uopz \
@@ -97,9 +102,10 @@ service httpd restart
 mysql -u root < /vagrant/config/mysql/init.sql
 
 # install drupal site
-drush si standard \
+cd /var/www/ybagapp.com
+drush si -y standard \
     --site-name=ybagapp.com \
-    --site-subdir=ybagapp.com \
+    --sites-subdir=ybagapp.com \
     --account-name=hong \
     --account-pass=hong \
     --account-mail=admin@ybagapp.com \
