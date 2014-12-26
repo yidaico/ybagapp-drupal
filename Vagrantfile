@@ -59,6 +59,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
+  # Disable selinux
+  config.vm.provision :shell, :inline => 'setenforce 0', :run => 'always'
+
   # Provisioning
   config.vm.provision :shell, :path => "bootstrap.sh"
 
