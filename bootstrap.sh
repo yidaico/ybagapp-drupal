@@ -35,6 +35,7 @@ yum install -y php55 \
                php55-php-cli \
                php55-php-opcache \
 	       php55-php-mysqlnd \
+	       php55-php-mbstring \
 	       php55-php-xml \
 	       php55-php-gd \
 
