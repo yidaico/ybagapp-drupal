@@ -90,4 +90,18 @@ cp /vagrant/config/php/php.ini /opt/remi/php55/root/etc
 rm -f /opt/remi/php55/root/etc/php.d/xdebug.ini
 cp /vagrant/config/php/extensions/xdebug.ini /opt/remi/php55/root/etc/php.d
 
+# restart httpd
 service httpd restart
+
+# set up mysql user and database
+mysql -u root < /vagrant/config/mysql/init.sql
+
+# install drupal site
+drush si standard \
+    --site-name=ybagapp.com \
+    --site-subdir=ybagapp.com \
+    --account-name=hong \
+    --account-pass=hong \
+    --account-mail=admin@ybagapp.com \
+    --db-url=mysql://ybagapp:ybagapp@localhost/ybagapp
+
