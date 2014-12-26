@@ -74,17 +74,20 @@ yum install -y vim
 # set up ssl certificates
 rm -f /etc/pki/tls/certs/localhost.crt
 rm -f /etc/pki/tls/private/localhost.key
-cp /vagrant/config/ssl/localhost.crt /etc/pki/tls/certs
-cp /vagrant/config/ssl/localhost.key /etc/pki/tls/private
+cp /vagrant/config/httpd/ssl/localhost.crt /etc/pki/tls/certs
+cp /vagrant/config/httpd/ssl/localhost.key /etc/pki/tls/private
 
 # set up httpd conf 
 ln -s /vagrant/drupal /var/www/ybagapp.com
 mkdir /etc/httpd/conf/vhosts
-cp /vagrant/config/vhosts/* /etc/httpd/conf/vhosts
+cp /vagrant/config/httpd/vhosts/* /etc/httpd/conf/vhosts
 rm -f /etc/httpd/conf/httpd.conf
-cp /vagrant/config/httpd.conf /etc/httpd/conf
+cp /vagrant/config/httpd/httpd.conf /etc/httpd/conf
 
-# disable selinux
-setenforce 0
+# set up php conf
+rm -f /opt/remi/php55/root/etc/php.ini
+cp /vagrant/config/php/php.ini /opt/remi/php55/root/etc
+rm -f /opt/remi/php55/root/etc/php.d/xdebug.ini
+cp /vagrant/config/php/extensions/xdebug.ini /opt/remi/php55/root/etc/php.d
 
 service httpd restart
