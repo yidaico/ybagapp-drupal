@@ -34,6 +34,7 @@ service httpd start
 #service nginx start
 
 # install php55
+yum remove php*
 yum install -y php55 \
 	       php55-php \
                php55-php-cli \
